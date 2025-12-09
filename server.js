@@ -35,7 +35,23 @@ async function getDataMahasiswa2() {
     return formattedData;
 }
 
- async function getDataMahasiswa3() {
+app.get('/all-vendors', async (req, res) => {
+    try {
+        const [dataA, dataB, dataC] = await Promise.all([
+            getDataMahasiswa1(),
+            getDataMahasiswa2(),
+            getDataMahasiswa3()
+        ]);
+        const allData = [...dataA, ...dataB, ...dataC];
+
+        res.json({kel6: 'Project Api Banyuwangi Market Place', data: allData});
+
+    } catch (error) {
+        res.status(500).send('Terjadi kesalahan: ' + error.message);
+    }
+});
+
+async function getDataMahasiswa3() {
      const res = await fetch(URL_API_MHS3);
      const data = await res.json();
      const formattedData = data.map(item => ({
@@ -47,7 +63,7 @@ async function getDataMahasiswa2() {
      }));
 
      return formattedData;
- }
+}
 
 
 app.get('/vendor-a', async (req, res) => {
