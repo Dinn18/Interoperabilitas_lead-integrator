@@ -34,7 +34,7 @@ async function mahasiswa2() {
     return initialData;
 }
 
-app.get('/', async (req, res) => {
+app.get('/all-vendors', async (req, res) => {
     try {
         const [data_A, data_B, data_C] = await Promise.all([
             mahasiswa1(),
