@@ -13,7 +13,7 @@ async function getDataMahasiswa1() {
         Id: item.kd_produk,
         nama: item.nm_brg,
         harga_final: parseInt(item.hrg, 10) * 0.9,
-        //harga_final: item.hrg * 0.9,
+        //harga final: item.hrg * 0.9,
         status: (item.ket_stok == "ada") ? "Tersedia" : "Tidak Tersedia",
         sumber: "Vendor A"
     }));
